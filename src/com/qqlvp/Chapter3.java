@@ -14,4 +14,16 @@ public class Chapter3 {
         stu.age = 15;
         stu.play();
     }
+
+    // 流程控制语句示例
+    public void test(){
+        // if 语句示例
+        int a = 3;
+        int b = 5;
+        if (a > b){
+            System.out.println("a > b");
+        }else {
+            System.out.println("b > a");
+        }
+    }
 }
