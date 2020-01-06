@@ -14,6 +14,67 @@ public class Chapter4 {
         System.out.println(stu.age);
         System.out.println(stu.name);
 
+        // 按值传送示例
+        String str;
+        int val;
+
+        PassValueTest pt = new PassValueTest();
+
+        val = 11;
+        pt.changeInt(val); // 改变val的值
+        System.out.println("Int value is :"+val);
+
+        str = new String("Hello");
+
+        pt.changeStr(str);
+
+        System.out.println("Str value is"+str);
+
+        pt.ptValue = 101.f;  // 给ptValue赋值
+
+        pt.changeObjValue(pt);  // 通过对象引用该值
+
+        System.out.println("Current ptValue is:"+pt.ptValue);
+
+
+        // 数学函数的使用示例
+        Circle c1 = new Circle();
+        c1.setRadius(50);
+        Circle c2 = new Circle();
+        c2.setRadius(10);
+
+        double circum1 = c1.circumference();
+        double circum2 = c2.circumference();
+
+        System.out.println("Circle1 has circumference:"+circum1);
+        System.out.println("Circle2 has circumference:"+circum2);
+
+
+        //静态方法示例
+        int a = 9,b = 10;
+        // 使用类名来调用方法，而不是对象名
+        int c = GeneralFunction.addUp(a,b);
+        System.out.println("addUp() give:"+c);
+
+
+        // 自动装箱示例
+        Integer obj1;
+
+        int num1 = 69;
+
+        obj1 = num1;  // 自动创建Integer对象
+
+        // 自动拆箱示例
+        Integer obj2 = new Integer(69);
+
+
+        int num2;
+
+        num2 = obj2;  // 自动解析出int型
+
+
+
+
     }
 
     // (1)类的示例
@@ -84,6 +145,40 @@ public class Chapter4 {
         // 默认的构造方法
         public Student(){
             this("Unknow");
+        }
+    }
+
+    //按值传送的示例
+    public static class PassValueTest{
+        private  float ptValue;
+        public void changeInt(int value){
+            value = 55;
+        }
+        public void changeStr(String value){
+            value = new String("different");
+        }
+        public void changeObjValue(PassValueTest ref){
+            ref.ptValue = 99.0f;
+        }
+    }
+
+    // 数学函数的使用示例
+    public static class Circle{
+        static double PI = 3.14159265;
+        private int radius;
+        public double circumference(){
+            return 2*PI*radius;
+        }
+        public void setRadius(int r){
+            radius = r;
+        }
+    }
+
+    // 静态方法的示例
+    public static class GeneralFunction{
+        // 静态方法
+        public static  int addUp(int x,int y){
+            return x+y;
         }
     }
 
